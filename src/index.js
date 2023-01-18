@@ -22,7 +22,6 @@ fetch(url)
 const addToMenu = (ramen) => {
     let img = document.createElement('img')
     img.src = ramen.image
-    // img.alt =
     img.id = `id${ramen.id}`
     img.addEventListener('click', () => {
         showDetails(ramen)
@@ -48,20 +47,8 @@ const addNewRamen = (e) => {
         comment: e.target['new-comment'].value,
         image: e.target.image.value
     }
-
-    fetch(`${url}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-    })
-    .then(response => response.json())
-    .then(data => {
-        addToMenu(body)
-    })
+    addToMenu(body)
 }
-
 
 
 
